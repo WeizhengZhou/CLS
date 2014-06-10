@@ -58,7 +58,7 @@ public class Vector3 {
 	
 	
 	public String toString(){
-		String s = String.format("x = %.4f, y = %.4f, z = %.4f, r = %.4f, theta = %.4f, phi = %.4f",
+		String s = String.format("(r,theta,phi) = (%.4f,%.4f,%.4f),  (x,y,z) = (%.4f,%.4f,%.4f)",
 				                  x,y,z,r,theta,phi);
 		return s;
 	}

@@ -61,5 +61,10 @@ public class Vector4 {
 		this.t = nt;
 		this.xyz = new Vector3(x,y,nz);
 	}
+    public String toString(){
+    	String s1 = xyz.toString();
+    	String s2 = String.format(", t = %.4f", this.t);
+    	return s1+s2;
+    }
 
 }
