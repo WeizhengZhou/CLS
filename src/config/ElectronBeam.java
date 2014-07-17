@@ -7,7 +7,6 @@ import physics.PhysConst;
  * @author Weizheng
  *
  */
-
 public class ElectronBeam {
 	private double energy = 400E6;//beam average energy, [eV]
 	private double current = 300E-3;//beam current, [A]
@@ -17,18 +16,18 @@ public class ElectronBeam {
 	private double betaY = 4.5;//vertical beta function, [m]
 	private double epsilonX = 20E-9;//horizontal emittance, [m*rad]
 	private double epsilonY = 0.;//vertical emittance, [m*rad]
-	private double sigmaX = Math.sqrt(betaX * epsilonX);
-	private double sigmaY = Math.sqrt(betaY * epsilonY);
-	private double sigmaXp = Math.sqrt(epsilonX / betaX);
-	private double sigmaYp = Math.sqrt(epsilonY / betaY);
+	
+	private double sigmaX = Math.sqrt(betaX * epsilonX);//horizontal beam size
+	private double sigmaY = Math.sqrt(betaY * epsilonY);//vertical beam size
+	private double sigmaXp = Math.sqrt(epsilonX / betaX);//horizontal angular spread
+	private double sigmaYp = Math.sqrt(epsilonY / betaY);//vertical angular spread
 	
 	private double sigmaP_over_P = 6E-3;//relative energy spread,
 	private double sigmaP = sigmaP_over_P * energy;//energy spread,
 	
 	private double sigmaT = 12.7E-12;//longitudinal RMS, [s]
-	private double sigmaZ = sigmaT * PhysConst.SPEED_OF_LIGHT;
-	
-	
+	private double sigmaZ = sigmaT * PhysConst.SPEED_OF_LIGHT;//longitudinal beam size, [m]
+		
 	public double getEnergy() {
 		return energy;
 	}
@@ -50,6 +49,4 @@ public class ElectronBeam {
 	public double getSigmaP() {
 		return sigmaP;
 	}
-	
-
 }

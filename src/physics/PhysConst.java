@@ -1,10 +1,9 @@
 package physics;
 /**
- * Physics constants 
+ * Store physical constants 
  * @author Weizheng
  *
  */
-
 public class PhysConst {	
 	//electron rest mass, [eV]
 	public final static double  MASS_OF_ELECTRON = 0.510998910E6;
@@ -16,5 +15,4 @@ public class PhysConst {
 	public final static double HBAR_TIMES_C = 1.239841E-9;
 	//electron charge
 	public final static double CHARGE_OF_ELECTRON = 1.60217657E-19;
-
 }

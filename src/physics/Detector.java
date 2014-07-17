@@ -11,5 +11,4 @@ public class Detector {
 		this.yd = yd;
 		this.zd = zd;
 	}
-
 }

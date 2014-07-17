@@ -10,31 +10,34 @@ import config.*;
 import physics.PhysConst;
 import Jama.*;
 /**
- * Covariance matrix, row 0 to row 7 represents
- * x,y,z,t,xp,yp,p,k 
- * 
+ * The covariance matrix of Gaussian importance sampling
+ * row 0 to row 7 represents, x,y,z,t,xp,yp,p,k, respectively 
  * @author Weizheng
  */
 
 public class CovMatrix {
-	//electron beam
-	private double sigmaX;
+	
+	private double sigmaX;//electron beam
 	private double sigmaY;
 	private double sigmaZ;
 	private double sigmaXp;
 	private double sigmaYp;
 	private double sigmaP;
 		
-	//photon beam size
-	private double sigmaW;
+	
+	private double sigmaW;//photon beam size
 	private double sigmaL;
 	private double sigmaK;	
-	//interaction angle
-	private double alpha;
+	
+	private double alpha;//collision angle
 	
 	private double[][] M;//covariance matrix
 	private double[][] L;//lower triangular matrix, M = L*L^T;
-	
+	/**
+	 * Set the Covariance matrix of Gauss Importance Sampling
+	 * @param eBeam electron beam
+	 * @param lBeam laser beam
+	 */
 	public CovMatrix(ElectronBeam eBeam, LaserBeam lBeam){
 		sigmaX  = eBeam.getSigmaX();
 		sigmaY  = eBeam.getSigmaY();
@@ -47,19 +50,18 @@ public class CovMatrix {
 		sigmaL  = lBeam.getSigmaL();
 		sigmaK  = lBeam.getSigmaK();	
 
-		alpha  = CollisionAngles.alpha;		
+		alpha  = CollisionAngles.ALPHA;		
 		//compute covariance matrix
 		double[][] iM_a = setInvCovMat();
 		Matrix iM = new Matrix(iM_a);
 		Matrix M_m = iM.inverse();
 		M  = M_m.getArray();
-		
-		//decompose M = L*L^T;
-		CholeskyDecomposition decomposer = new CholeskyDecomposition(M_m);
+			
+		CholeskyDecomposition decomposer = new CholeskyDecomposition(M_m);//decompose M = L*L^T;
 		Matrix lowerTraMat_m = decomposer.getL();
 		L = lowerTraMat_m.getArray();		
 	}
-	private double[][] setInvCovMat(){
+	private double[][] setInvCovMat(){//set the covariance matrix
 		double[][] iM_a = new double[8][8];	
 		for(int i=0;i<8;i++){
 			for(int j=0;j<8;j++){
@@ -82,6 +84,10 @@ public class CovMatrix {
 		iM_a[7][7] = 1.0/pow(sigmaK,2);  
 		return iM_a;
 	}
+	/**
+	 * get the lower triangular matrix decomposition of covariance matrix
+	 * @return lower triangular matrix 
+	 */
 	public double[][] getLowerTraMat(){
 		return L;
 	}

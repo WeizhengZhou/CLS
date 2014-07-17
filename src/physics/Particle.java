@@ -2,11 +2,14 @@ package physics;
 
 import math.Vector3;
 import math.Vector4;
-
-public abstract class Particle {
-	
-	private final double mass;
-	private Vector4 momentum = null;
+/**
+ * A Particle class represents a particle, with position and momentum
+ * @author Weizheng
+ *
+ */
+public abstract class Particle {	
+	private final double mass;//mass of the particle
+	private Vector4 momentum = null;//four-momentum of the particle
 	public Particle(double mass, Vector4 momentum){
 		this.mass = mass;
 		this.momentum = momentum;

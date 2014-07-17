@@ -23,10 +23,10 @@ public class CLSMain {
 			for(int j=0;j<Collimator.N;j++){
 				double yd = (j - Collimator.N/2) * Collimator.STEP;
 				Detector detector = new Detector(xd,yd,Collimator.DISTANCE);
-				double[] rv = sampler.nextRandomVector();
-				Vector4 coordinate = new Vector4(rv[3],rv[0],rv[1],rv[2]);
-				Photon photon = new Photon();
-				Electron electron = new Electron();
+				
+				
+
+
 				
 			}
 		}

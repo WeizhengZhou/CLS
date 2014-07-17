@@ -11,7 +11,7 @@ import math.Vector3;
 		
 public class Polarization {
 	
-	private double P = 0; // degree of polarization
+	private double P = 0;// degree of polarization
 	private double L = 0;//degree of linear polarization
 	private double A = 0.;//degree of circular polarization
 	private Vector3 E = null;
@@ -49,9 +49,7 @@ public class Polarization {
 		this.B.rotateZ(a);	
 	}
 	public void boostZ(double gamma){
-		
-		double beta =  Math.sqrt(1-1/Math.pow(gamma, 2));
-		
+		double beta =  Math.sqrt(1-1/Math.pow(gamma, 2));	
 		double nEx = gamma * (E.getX() - beta * B.getY());
 		double nEy = gamma * (E.getY() + beta * B.getX());
 		double nEz = E.getZ();
@@ -78,9 +76,7 @@ public class Polarization {
 		double tau = Math.atan2(E2,E1);
 		double xi1 = P * L * Math.sin(2*tau);
 		double xi2 = P * A;
-		double xi3 = P * L * Math.cos(2*tau);	
-		
+		double xi3 = P * L * Math.cos(2*tau);			
 		return new Vector3(xi1,xi2,xi3);
 	}
-
 }

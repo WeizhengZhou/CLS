@@ -24,7 +24,4 @@ public class LaserBeam {
 	public double getSigmaL() {
 		return sigmaL;
 	}
-	
-	
-
 }

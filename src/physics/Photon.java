@@ -31,6 +31,4 @@ public class Photon extends Particle{
 		super.boostZ(gamma);
 		polarization.boostZ(gamma);
 	}
-	
-
 }
